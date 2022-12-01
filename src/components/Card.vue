@@ -63,6 +63,7 @@ export default {
     text-transform: uppercase;
     color: #07575b;
     text-align: center;
+    font-size: 26px;
 }
 .item-text{
     font-size: 16px;

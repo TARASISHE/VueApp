@@ -238,10 +238,12 @@ hr{
     .delete-btn{
     padding: 1rem 2.5rem;
     font-size: 12px;
+    
     }
     .edit-btn{
     padding: 1rem 2.5rem;
     font-size: 12px;
+    
     }
     .list-item {
     font-size: 18px;

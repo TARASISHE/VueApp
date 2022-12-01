@@ -84,9 +84,14 @@
     .container{
     max-width: 1280px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
     }
     .app{
-      width: 100%;
+      width: 60%;
       display: flex;
       align-items: center;
       justify-content: center;

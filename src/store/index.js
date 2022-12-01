@@ -28,18 +28,18 @@ export default createStore({
 
       try {
         await signInWithEmailAndPassword(auth, email, password)
+        M.toast({html: 'Welcome back'})
       } catch (error) {
         switch(error.code) {
           case 'auth/user-not-found':
-            alert("User not found")
+            M.toast({html: 'User not found'})
             break
           case 'auth/wrong-password':
-            alert("Wrong password")
+            M.toast({html: "Wrong password"})
             break
           default:
             alert("Something went wrong")
         }
-
         return
       }
 
@@ -53,24 +53,24 @@ export default createStore({
 
       try {
         await createUserWithEmailAndPassword(auth, email, password)
+        M.toast({html: 'Hi.It is your profile, have a nice time'})
       } catch (error) {
         switch(error.code) {
           case 'auth/email-already-in-use':
-            alert("Email already in use")
+            M.toast({html: 'Email already in use'})
             break
           case 'auth/invalid-email':
-            alert("Invalid email")
+            M.toast({html: 'Invalid email'})
             break
           case 'auth/operation-not-allowed':
-            alert("Operation not allowed")
+            M.toast({html: "Operation not allowed"})
             break
           case 'auth/weak-password':
-            alert("Weak password")
+            M.toast({html: "Weak password"})
             break
           default:
             alert("Something went wrong")
         }
-
         return
       }
 
@@ -84,7 +84,8 @@ export default createStore({
 
       commit('CLEAR_USER')
 
-      router.push('/login')
+      router.push('/login?=message=logout')
+      M.toast({html: 'Logout'})
     },
 
     fetchUser ({ commit }) {
