@@ -59,6 +59,7 @@
     padding: 0;
     box-sizing: border-box;
     }
+ 
 
     a{
     text-decoration: none;
@@ -75,7 +76,7 @@
     }
 
     .wrapper{
-    min-height:100vh;
+    min-height:93.4vh;
     background-color: #c4dfe6;
     display: flex;
     align-items: center;

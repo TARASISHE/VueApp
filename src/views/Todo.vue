@@ -40,6 +40,12 @@ export default{
             todos:[],
         }
     },
+    async mounted(){
+        const data =  localStorage.getItem('todos');
+        if(data){
+            this.todos = JSON.parse(data);
+        }
+    },
     computed:{
         actionButtonName(){
             return this.isEditing ? "Edit" : "Add Note";
@@ -59,10 +65,12 @@ export default{
                 this.todos.push(this.todo);
                 this.todo = ''
             }
+            localStorage.setItem('todos', JSON.stringify(this.todos))
         },
 
         deleteTodo(index){
-            this.todos.splice(index,1)
+            this.todos.splice(index,1);
+            localStorage.setItem('todos', JSON.stringify(this.todos))
         },
 
         editTodo(todo, index){
@@ -88,6 +96,7 @@ export default{
   padding: 0;
   box-sizing: border-box;
 }
+
 
 a{
   text-decoration: none;

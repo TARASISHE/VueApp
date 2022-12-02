@@ -23,16 +23,14 @@ components:{
 }
 </script>
 
-<style>
+<style scoped>
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body{
-    overflow-y: hidden;
-}
+
 
 a{
   text-decoration: none;
@@ -41,7 +39,7 @@ li{
   list-style: none;
 }
 .wrapper{
-  min-height: 100vh;
+  min-height: 93.4vh;
 	background-color: #c4dfe6;
 }
 .container{

@@ -39,6 +39,8 @@ export default {
 </script>
 
 <style scoped>
+
+
 .login{
 	min-height: 100vh;
 	padding: 0;
