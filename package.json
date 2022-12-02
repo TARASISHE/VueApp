@@ -2,13 +2,17 @@
   "name": "auth-train",
   "version": "0.0.0",
   "private": true,
+  "homepage": " https://tarasishe.github.io/VueDeploy/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "gh-pages -d dist",
+    "predeploy": "npm run build"
   },
   "dependencies": {
     "firebase": "^9.14.0",
+    "gh-pages": "^4.0.0",
     "materialize-css": "^1.0.0-rc.2",
     "vue": "^3.2.45",
     "vue-router": "^4.1.6",
