@@ -31,7 +31,7 @@ export default{
     components: {
         HeaderVue,
     },
-    mixins: [currentUser],
+  
     data(){
         return{
             selectedIndex: null,
