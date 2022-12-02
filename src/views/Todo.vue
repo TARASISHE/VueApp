@@ -27,12 +27,11 @@
 
 <script>
 import HeaderVue from '../components/Header.vue'
-
 export default{
     components: {
         HeaderVue,
     },
-
+    mixins: [currentUser],
     data(){
         return{
             selectedIndex: null,
@@ -78,7 +77,7 @@ export default{
             this.isEditing = false;
             this.todo = ''
         },
-    }
+    },
 }
 
 </script>
