@@ -18,21 +18,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app)
-/*
-const getUid = ()=>{
-  const user = firebase.auth().currentUser; 
-  return user ? user.uid : null;
-}*/
 
-const isLogIn = () =>{
-  firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-      $router.push('/')
-    } else {
-      $router.push('/login')
-      // No user is signed in.
-    }
-    });
-}
 
-export { auth , isLogIn}
+export { auth }
