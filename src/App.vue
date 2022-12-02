@@ -3,8 +3,6 @@
  <router-view />
 </template>
 
-<script>
-
-
-</script>
-
+<style >
+@import './assets/materialize.css';
+</style>
