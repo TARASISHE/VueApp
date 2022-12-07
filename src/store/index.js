@@ -6,86 +6,81 @@ import {
   signInWithEmailAndPassword,
   signOut 
 } from 'firebase/auth'
+import { createToaster } from "@meforma/vue-toaster";
+
+const toaster = createToaster({ 
+  position: 'top-right'
+})
+
 
 export default createStore({
   state: {
-    user: null
+    user: null,
+    toast:false,
   },
   mutations: {
-
     SET_USER (state, user) {
       state.user = user
     },
-
     CLEAR_USER (state) {
       state.user = null
-    }
-
+    },
   },
   actions: {
     async login ({ commit }, details) {
       const { email, password } = details
-
       try {
         await signInWithEmailAndPassword(auth, email, password)
-        M.toast({html: 'Welcome back'})
       } catch (error) {
         switch(error.code) {
           case 'auth/user-not-found':
-            M.toast({html: 'User not found'})
+            toaster.show(`User not found`);
             break
           case 'auth/wrong-password':
-            M.toast({html: "Wrong password"})
+            toaster.show(`Wrong password`);
             break
           default:
-            alert("Something went wrong")
+            toaster.show(`Something went wrong`);
         }
         return
       }
-
       commit('SET_USER', auth.currentUser)
-
       router.push('/')
+      toaster.show(`Welcome back`);
     },
 
     async register ({ commit}, details) {
        const { email, password } = details
-
       try {
         await createUserWithEmailAndPassword(auth, email, password)
-        M.toast({html: 'Hi.It is your profile, have a nice time'})
+    
       } catch (error) {
         switch(error.code) {
           case 'auth/email-already-in-use':
-            M.toast({html: 'Email already in use'})
+            toaster.show(`Email already in use`)
             break
           case 'auth/invalid-email':
-            M.toast({html: 'Invalid email'})
+            toaster.show(`Invalid email`)
             break
           case 'auth/operation-not-allowed':
-            M.toast({html: "Operation not allowed"})
+            toaster.show(`Operation not allowed`)
             break
           case 'auth/weak-password':
-            M.toast({html: "Weak password"})
+            toaster.show(`Weak password`)
             break
           default:
-            alert("Something went wrong")
         }
         return
       }
-
       commit('SET_USER', auth.currentUser)
-
       router.push('/')
+      toaster.show(`Hi, it is your profile. Have a nice time`)
     },
-
     async logout ({ commit }) {
       await signOut(auth)
-
       commit('CLEAR_USER')
-
       router.push('/login?=message=logout')
-      M.toast({html: 'Logout'})
+      toaster.show(`LOGOUT`)
     },
 
     fetchUser ({ commit }) {
@@ -100,6 +95,5 @@ export default createStore({
         }
       })
     }
-    
   }
 })

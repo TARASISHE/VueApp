@@ -25,6 +25,7 @@
 import { ref } from 'vue'
 import { useStore } from 'vuex'
 
+
 export default {
 	setup () {
 		const login_form = ref({});
@@ -35,7 +36,6 @@ export default {
 		return {
 			login_form,
 			login,
-			
 		}
 	},
 }

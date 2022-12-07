@@ -1,5 +1,9 @@
 <template>
-  <HeaderVue></HeaderVue>
+  <HeaderVue/>
+<!--  <Transition name="toast">
+  <ToastVue name="Welcome to your account">
+  </ToastVue>
+  </Transition>-->
   <div class="wrapper">
     <div class="container">
       <div class="flex-center">
@@ -13,14 +17,26 @@
 <script>
 import HeaderVue from '../components/Header.vue'
 import CardVue from '../components/Card.vue'
+import ToastVue from '../components/Toast.vue';
 
 
 export default {
-components:{
+props:{
+    name:{
+      type:String
+    },
+  },
+  components:{
   HeaderVue,
   CardVue,
+  ToastVue,
+  },  
+  data(){
+    return{
+    }
+  },
 }
-}
+
 </script>
 
 <style scoped>
@@ -29,8 +45,6 @@ components:{
   padding: 0;
   box-sizing: border-box;
 }
-
-
 
 a{
   text-decoration: none;
@@ -46,6 +60,24 @@ li{
   max-width: 1280px;
   margin: 0 auto;
 }
+
+  .toast-enter-from {
+    opacity: 0;
+    transform: translateY(-70px);
+  }
+
+  .toast-enter-active {
+    transition: all 0.3s ease;
+  }
+ 
+  .toast-leave-to {
+    opacity: 0;
+    transform: translateY(-70px);
+  }
+  .toast-leave-active {
+    transition: all 0.3s ease;
+  }
+
 
 @media  screen and (max-width: 950px){
   body{

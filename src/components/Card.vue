@@ -6,7 +6,6 @@
         <button class="btn-card"> 
             <router-link :to="card.navigation"> Try</router-link>
         </button>
-       
     </div>
 </div>
 </template>

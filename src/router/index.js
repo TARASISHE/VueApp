@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import { auth } from '../firebase'
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
@@ -9,11 +9,11 @@ import WeatherForecast from '../views/WeatherForecast.vue'
 
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHashHistory(import.meta.env.BASE_URL),
    routes :
       [
     {
-      path: '/',
+      path: "/",
       name: 'Home',
       component: Home,
       meta: {
@@ -21,7 +21,7 @@ const router = createRouter({
       }
     },
     {
-      path: '/login',
+      path:"/login",
       name: 'Login',
       component: Login
     },
@@ -59,6 +59,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
+  console.log(to)
   if (to.path === '/login' && auth.currentUser) {
     next('/')
     return;

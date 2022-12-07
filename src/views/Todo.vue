@@ -12,7 +12,7 @@
                
                     <br>
                     <hr>
-                        <ul class="list">
+                        <TransitionGroup tag="ul" name="list" class="list" appear>
                             <li class="list-item" v-for="(todo, index) in todos" :key="todo">
                             {{index + 1}}) {{ todo }}
                             <div>
@@ -20,7 +20,8 @@
                             <button class="delete-btn" @click="deleteTodo(index)" >Delete</button>
                             </div>
                             </li>
-                        </ul>
+                        </TransitionGroup>
+                        <p class="nothing-to-do" v-if="(todos.length === 0)">Nothing to do</p>
                     </div>    
          </div>
 </template>
@@ -185,7 +186,8 @@ hr{
     flex-direction: column;
     width: 100%;
     margin: 20px 0px 0px 0px;
-    padding: 20px 15px; 
+    padding: 0px 15px; 
+    position: relative;
 }
 
 .list-item {
@@ -225,6 +227,40 @@ hr{
 	color: #003b46;
 	background-color: #FFF;
 }
+.nothing-to-do{
+    font-weight: 600;
+    padding: 0rem 3rem;
+    font-size: 20px;
+}
+
+.list-enter-from{
+    opacity: 0;
+    transform: scale(0.6);
+}
+.list-enter-to{
+    opacity: 1;
+    transform: scale(1);
+}
+.list-enter-active{
+    transition: all 0.4s ease;
+}
+
+.list-leave-from{
+    opacity: 1;
+}
+.list-leave-to{
+    opacity: 0;
+}
+.list-leave-active{
+    transition: all 0.4s ease;
+    position: absolute;
+}
+
+.list-move{
+    transition: all 0.3s ease;
+}
+
+
 
 @media screen and (max-width:800px){
     h1{

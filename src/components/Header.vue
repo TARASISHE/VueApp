@@ -1,5 +1,5 @@
 <template>
-        <div id="nav" class="nav" v-if="$store.state.user"> 
+        <div id="nav" class="nav" v-if="$store.state.user" ><!--v-if="$store.state.user"--> 
           <div class="container">
             <div class="flex">
               <ul class="list">
@@ -8,7 +8,7 @@
                 <li class="list-link"><router-link to="/todo">Todo-List</router-link></li>
                 <li class="list-link"><router-link to="/weather-forecast">Weather Forecast</router-link></li>
               </ul>
-                <button class="btn-logout" @click="$store.dispatch('logout')">Logout</button>
+                <button class="btn-logout" @click="$store.dispatch('logout')">Logout</button><!--@click="$store.dispatch('logout')"--> 
             </div>
           </div>
        </div>   
@@ -49,6 +49,7 @@
     width: 100%;
     height: 50px;
     background-color: #07575b; 
+    padding-bottom: 50px;
   }
   .flex{
     width: 100%;

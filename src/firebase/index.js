@@ -4,6 +4,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth"
 
 
+
 const firebaseConfig = {
   apiKey: "AIzaSyDj6Fsz-Aem3ydUr-LwZB8FrEBsjhb_qgA",
   authDomain: "vue-training-dd609.firebaseapp.com",
@@ -18,6 +19,5 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app)
-
 
 export { auth }
