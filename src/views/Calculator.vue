@@ -1,5 +1,4 @@
 <template>
- <HeaderVue />
     <div class="wrapper">
       <div class="container">
         <h1>Calculator</h1>
@@ -19,12 +18,9 @@
   
   
   <script scoped>
-  import HeaderVue from '../components/Header.vue'
+ 
 
   export default{
-    components: {
-     HeaderVue,
-    },
     data(){
       return{
         result:'',
@@ -72,12 +68,12 @@
     h1{
     text-align: center;
     margin-bottom: 20px;
-    color: #07575b;
+    color: var(--medium-dark);
     }
 
     .wrapper{
     min-height:93.4vh;
-    background-color: #c4dfe6;
+    background-color: var(--light-color);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -107,7 +103,7 @@
   .display{
     width:100%;
     height: 50px;
-    background-color: #243849;
+    background-color: var(--calc-main);
     }
   
   input[type="text"] {
@@ -128,24 +124,24 @@
   }
   
   .num{
-    background-color: #243849;
+    background-color: var(--calc-main);
     color: #fff;
     font-weight: 400;
     transition: all 0.2s ease 0s;
   }
   .num:hover{
     background-color: #fff;
-    color:#243849 ;
+    color:var(--calc-main) ;
   }
   
   .op {
-    background-color: #ff9900;
-    color: #243849;
+    background-color: var(--op-colour);
+    color: (--calc-main);
     transition: all 0.2s ease 0s;
   }
   .op:hover{
     background-color: #fff;
-    color:#243849 ;
+    color:(--calc-main) ;
   }
 
 

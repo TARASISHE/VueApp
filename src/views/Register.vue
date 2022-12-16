@@ -4,16 +4,23 @@
 			<form class="register" @submit.prevent="register">
 				<h2>Register</h2>
 				<input 
+					name="email"
 					type="email" 
 					placeholder="Email address"
 					v-model="register_form.email" />
 				<input 
+					name="password"
 					type="password" 
 					placeholder="Password" 
 					v-model="register_form.password" />
 				<input 
 					type="submit" 
 					value="Register" />
+					<!--<button 
+					class="register_btn"
+					@click="$store.dispatch('register')">
+						Register
+					</button>  якщо роблю через кнопку то видає помилку при вході на сторінку-->
                 <p class="login-note">Already have an account?<span> <router-link class="access-linklog" to="/Login">Login</router-link></span></p>
 			</form>
 		</section>
@@ -48,7 +55,7 @@ export default {
 .forms {
 	display: flex;
 	min-height: 100vh;
-    background-color: #c4dfe6;
+    background-color: var(--light-color);
 }
 form {
 	flex: 1 1 0%;
@@ -60,7 +67,7 @@ h2 {
 	font-size: 2rem;
 	text-transform: uppercase;
 	margin-bottom: 2rem;
-    color: #07575b;
+    color: var(--medium-dark);
 	text-align: center;
 }
 input {
@@ -91,12 +98,12 @@ input::placeholder {
 	color: inherit;
 }
 form.register input:not([type="submit"]) {
-    color: #07575b;
-	border-bottom: 2px solid #07575b;
+    color: var(--medium-dark);
+	border-bottom: 2px solid var(--medium-dark);
 }
 
 form.register input[type="submit"] {
-	background-color: #07575b;
+	background-color: var(--medium-dark);
 	color: #FFF;
 	font-weight: 700;
 	padding: 1rem 2rem;
@@ -106,19 +113,19 @@ form.register input[type="submit"] {
     transition: all 0.3s;
 }
 form.register input[type="submit"]:hover{
-	border:2px solid #07575b;
-	color: #07575b;
+	border:2px solid var(--medium-dark);
+	color: var(--medium-dark);
 	background-color: #FFF;
 }
 .login-note{
     font-size: 18px;
-    color: #07575b;
+    color: var(--medium-dark);
 	text-align: center;
 }
 .access-linklog{
 	text-decoration: none;
 	font-weight: 600;
-	color: #07575b;
+	color: var(--medium-dark);
     padding: 0px 10px;
     font-size: 18px;
     transition: all 0.3s;
@@ -127,6 +134,34 @@ form.register input[type="submit"]:hover{
 .access-linklog:hover{
 	text-decoration: underline;
 }
+/*
+.register_btn{
+	background-color: var(--medium-dark)b;
+	color: #FFF;
+	font-weight: 700;
+	padding: 1rem 2rem;
+	border-radius: 0.5rem;
+	cursor: pointer;
+	text-transform: uppercase;
+	transition: all 0.3s;
+	appearance: none;
+	border: none;
+	outline: none;
+	display: block;
+	width: 100%;
+	max-width: 400px;
+	margin: 0 auto;
+	font-size: 1.5rem;
+	margin-bottom: 2rem;
+	padding: 1.0rem 0rem;
+	border-radius: 5px;
+}
+.register_btn:hover{
+		border:2px solid var(--medium-dark);
+	color: var(--medium-dark);
+	background-color: #FFF;
+}
+*/
 
 @media screen and (max-width:540px){
 	.forms{

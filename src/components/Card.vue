@@ -1,10 +1,10 @@
 <template>
     <div class="flex-items">
-    <div class="item" v-for="card in navCards"  :key="card"> 
-        <h3 class="item-title">{{card.title}}</h3>
-        <p class="item-text">{{card.text}}</p> 
+    <div class="item"> 
+        <h3 class="item-title">{{title}}</h3>
+        <p class="item-text">{{text}}</p> 
         <button class="btn-card"> 
-            <router-link :to="card.navigation"> Try</router-link>
+            <router-link :to="navigation"> Try</router-link>
         </button>
     </div>
 </div>
@@ -12,27 +12,17 @@
 
 <script>
 export default {
-    data(){
-        return {
-            navCards:[
-                {
-                    title:"Calculator",
-                    text : "This is simple calculator which help you to do a mathematic`s calculations.Try to use app-calculator!",
-                    navigation: '/calculator',
-                },
-                {
-                    title:"Todo-List",
-                    text : "It is a good app if you need to write some important affairs which you don`t want to forget.Try to use app-todo-list!",
-                    navigation:"/todo",
-                },
-                {
-                    title:"Weather Forecast",
-                    text : "If you are going to travel somewhere, you should use this weather foreacts.Try to use app-weather-forecast!",
-                    navigation:"/weather-forecast",
-                } 
-            ]
-        }
-    }, 
+    props:{
+        title: {
+        type: String
+        },
+        text: {
+        type: String
+        },
+        navigation: {
+        type: String
+        },
+    },
 }
 </script>
 
@@ -54,22 +44,22 @@ export default {
     border-radius: 15px;
     width: 250px;
     height: 400px;
-    background-color: #66a5ad;
+    background-color: var(--medium-light);
     box-shadow: 10px 5px 5px #15afb7;
     
 }
 .item-title {
     text-transform: uppercase;
-    color: #07575b;
+    color: var(--medium-dark);
     text-align: center;
-    font-size: 26px;
+    font-size: 21px;
 }
 .item-text{
     font-size: 16px;
     margin-top: 40px; 
     text-align: center;
     max-width: 230px;
-    color: #07575b;
+    color:  var(--medium-dark);
 }
 
 .btn-card {
@@ -77,7 +67,7 @@ export default {
     width: 150px;
     height: 30px;
     border-radius: 15px;
-    background-color:#07575b;
+    background-color: var(--medium-dark);
     border: none;
     margin-top: 40px;
     transition: all 0.3s ease 0s; 
@@ -94,15 +84,14 @@ export default {
   }
 
  .btn-card a:hover{
-    color: #07575b;
+    color:  var(--medium-dark);
   }
 
 .btn-card a{
-    color: #c4dfe6;
+    color:  var(--light-color);
     padding:10px 60px;
 }
-@media  screen and (max-width: 950px){
-
+@media  screen and (max-width: 768px){
     .flex-items{
         flex-direction: column;
         align-items: center;

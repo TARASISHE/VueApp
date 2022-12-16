@@ -26,9 +26,10 @@ export default createStore({
       state.user = null
     },
   },
+  
   actions: {
     async login ({ commit }, details) {
-      const { email, password } = details
+      const { email, password } = details;
       try {
         await signInWithEmailAndPassword(auth, email, password)
       } catch (error) {
@@ -45,6 +46,7 @@ export default createStore({
         return
       }
       commit('SET_USER', auth.currentUser)
+      console.log(auth.currentUser)
       router.push('/')
       toaster.show(`Welcome back`);
     },
@@ -53,7 +55,6 @@ export default createStore({
        const { email, password } = details
       try {
         await createUserWithEmailAndPassword(auth, email, password)
-    
       } catch (error) {
         switch(error.code) {
           case 'auth/email-already-in-use':
@@ -91,6 +92,7 @@ export default createStore({
           commit('SET_USER', user)
           if (router.isReady() && router.currentRoute.value.path === '/login') {
             router.push('/')
+            console.log(auth.currentUser)
           }
         }
       })

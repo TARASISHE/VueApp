@@ -59,13 +59,15 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  console.log(to)
   if (to.path === '/login' && auth.currentUser) {
     next('/')
+    console.log(auth.currentUser)
     return;
   }
   if (to.matched.some(record => record.meta.requiresAuth) && !auth.currentUser) {
     next('/login')
+    console.log("login")
+    console.log(auth.currentUser)
     return;
   }
   next();

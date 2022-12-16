@@ -1,22 +1,29 @@
 <template>
 	<main class="login">
 		<section class="forms">
-			<form class="login" @submit.prevent="login">
+			<form class="login" @submit.prevent="login"> <!--@submit.prevent="$store.dispatch('login')"-->
 				<h2>Login</h2>
 				<input 
+					name="email"
 					type="email" 
 					placeholder="Email address"
 					v-model="login_form.email" />
 				<input 
+					name="password"
 					type="password" 
 					placeholder="Password" 
 					v-model="login_form.password" />
+					<!--<button 
+					class="login_btn"
+					@click="$store.dispatch('login')">
+						Login
+					</button>  якщо роблю через кнопку то видає помилку при вході на сторінку через Composition API, бо не виде реф-->
 				<input 
 					type="submit" 
 					value="Login" />
-				<p class="register-note">Don't have an account?<span> <router-link class="access-link" to="/register">Register</router-link></span></p>
-			</form>
+				<p class="register-note">Don't have an account? <router-link class="access-link" to="/register">Register</router-link></p>
 
+			</form>
 		</section>
 	</main>
 </template>
@@ -41,6 +48,23 @@ export default {
 }
 </script>
 
+<!--
+	<script>
+		export default{
+			data(){
+				return{
+					loginForm:{},
+				}
+			},
+			methods:{
+				enterLoginInfo(){
+					this.$store.dispatch('login', loginForm)
+				}
+			}
+		}
+
+	</script>
+-->
 <style scoped>
 
 .login{
@@ -50,7 +74,7 @@ export default {
 .forms {
 	display: flex;
 	min-height: 100vh;
-	background-color: #c4dfe6;
+	background-color: var(--light-color);
 }
 form {
 	flex: 1 1 0%;
@@ -61,7 +85,7 @@ h2 {
 	font-size: 2rem;
 	text-transform: uppercase;
 	margin-bottom: 2rem;
-	color: #07575b;
+	color: var(--medium-dark);
 	margin-top: 175px;
 }
 input {
@@ -90,8 +114,8 @@ input::placeholder {
 }
 
 form.login input:not([type="submit"]) {
-	color: #07575b;
-	border-bottom: 2px solid #07575b;
+	color: var(--medium-dark);
+	border-bottom: 2px solid var(--medium-dark);
 }
 
 form.login input:not([type="submit"]):focus{
@@ -99,7 +123,7 @@ form.login input:not([type="submit"]):focus{
 }
 
 form.login input[type="submit"] {
-	background-color: #07575b;
+	background-color: var(--medium-dark);
 	color: #FFF;
 	font-weight: 700;
 	padding: 1rem 2rem;
@@ -109,19 +133,19 @@ form.login input[type="submit"] {
 	transition: all 0.3s;
 }
 form.login input[type="submit"]:hover{
-	border:2px solid #07575b;
-	color: #07575b;
+	border:2px solid var(--medium-dark);
+	color: var(--medium-dark);
 	background-color: #FFF;
 }
 .register-note{
 	font-size: 18px;
-	color: #07575b;
+	color: var(--medium-dark);
 	text-align: center;
 }
 .access-link{
 	text-decoration: none;
 	font-weight: 600;
-	color: #07575b;
+	color: var(--medium-dark);
 	font-size: 18px;
 	padding: 0px 15px;
 	transition: all 0.3s;
@@ -129,6 +153,34 @@ form.login input[type="submit"]:hover{
 .access-link:hover{
 	text-decoration: underline;
 }
+/*
+.login_btn{
+	background-color: var(--medium-dark);
+	color: #FFF;
+	font-weight: 700;
+	padding: 1rem 2rem;
+	border-radius: 0.5rem;
+	cursor: pointer;
+	text-transform: uppercase;
+	transition: all 0.3s;
+	appearance: none;
+	border: none;
+	outline: none;
+	display: block;
+	width: 100%;
+	max-width: 400px;
+	margin: 0 auto;
+	font-size: 1.5rem;
+	margin-bottom: 2rem;
+	padding: 1.0rem 0rem;
+	border-radius: 5px;
+}
+.login_btn:hover{
+		border:2px solid var(--medium-dark);
+	color: var(--medium-dark);
+	background-color: #FFF;
+}
+*/
 
 @media screen and (max-width:540px){
 	.forms{

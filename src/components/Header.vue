@@ -1,5 +1,5 @@
 <template>
-        <div id="nav" class="nav" v-if="$store.state.user" ><!--v-if="$store.state.user"--> 
+        <div id="nav" class="nav"><!--v-if="$store.state.user"--> 
           <div class="container">
             <div class="flex">
               <ul class="list">
@@ -8,13 +8,13 @@
                 <li class="list-link"><router-link to="/todo">Todo-List</router-link></li>
                 <li class="list-link"><router-link to="/weather-forecast">Weather Forecast</router-link></li>
               </ul>
-                <button class="btn-logout" @click="$store.dispatch('logout')">Logout</button><!--@click="$store.dispatch('logout')"--> 
+                <button class="btn-logout" @click="$store.dispatch('logout')" >Logout</button><!--@click="$store.dispatch('logout')"--> 
             </div>
           </div>
        </div>   
-    <router-view/>
+       
   </template>
-  
+  <!--
   <script>
   import { onBeforeMount } from 'vue'
   import { useStore } from 'vuex'
@@ -26,8 +26,8 @@
       })
     }
   }
-  </script>
-  
+  -->
+
   <style>
   * {
     margin: 0;
@@ -48,7 +48,7 @@
   .nav{
     width: 100%;
     height: 50px;
-    background-color: #07575b; 
+    background-color: var(--medium-dark); 
     padding-bottom: 50px;
   }
   .flex{
@@ -64,7 +64,7 @@
   }
   .list-link a{
     font-size: 16px;
-    color: #c4dfe6;
+    color: var(--light-color);
   }
   
   .list-link a:hover{
@@ -75,11 +75,11 @@
   .btn-logout{
     border: none;
     font-size: 16px;
-    color: #07575b ;
+    color: var(--medium-dark) ;
     width: 100px;
     height: 25px;
     border-radius: 5px;
-    background-color: #66a5ad;
+    background-color: var(--medium-light);
     color: #FFF;
     background-image: linear-gradient(#c4dfe6,#c4dfe6);
     background-size: 0 100%;
@@ -89,7 +89,7 @@
   }
   .btn-logout:hover{
     background-size: 100% 100%;
-    color: #07575b;
+    color: var(--medium-dark);
   }
   
   @media  screen and (max-width: 1281px){
@@ -98,7 +98,7 @@
     }
   }
 
-  @media  screen and (max-width: 700px ){
+  @media  screen and (max-width: 768px ){
     .list{
     gap: 20px;
     }
@@ -107,7 +107,7 @@
     }
   }
 
-  @media  screen and (max-width: 470px){
+  @media  screen and (max-width: 500px){
    .flex{
     flex-direction: column;
    }

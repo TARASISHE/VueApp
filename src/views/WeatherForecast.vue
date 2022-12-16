@@ -1,6 +1,6 @@
 <template>
-    <HeaderVue/>
-    <div id="apps" :class="weather.main && weather.main.temp > 16 ? 'warm' : weather.main && weather.main.temp < 16? 'cold' : ''">
+
+    <div id="apps" :class="changePicture">
       <main>
         <div class="search-box">
           <input 
@@ -27,7 +27,7 @@
         <div class="weather-wrap" v-if="weather.main">
           <div class="location-box">
             <div class="location"> {{query}}</div>
-            <div class="date">{{ dateBuilder () }}</div>
+            <div class="date">{{ dateBuilder  }}</div>
           </div>
   
           <div class="weather-box">
@@ -40,11 +40,9 @@
   </template>
 <script>
 import Spinner from '../components/Spinner.vue';
-import HeaderVue  from '../components/Header.vue';
 export default{
   components:{
     Spinner,
-    HeaderVue,
   },
     data(){
         return{
@@ -68,8 +66,9 @@ export default{
               this.weather = data;
           } catch (e){
             alert(`Error:${e}`)
+          } finally{
+            this.loading= false;
           }
-         this.loading= false;
         },
         getSearchResults(){
           this.searchCityPanel=true;
@@ -79,11 +78,27 @@ export default{
               const result = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${this.query}.json?access_token=${this.cityApiKey}&types=place`);
               const data = await result.json();
               this.cities = data.features;
-              console.log(this.cities)
             }
           },300)
         },
-        dateBuilder () {
+        appendCity(city,[lon,lat]){
+          this.searchCityPanel=true;
+          this.query = city
+          this.fetchWeather(lon,lat)
+          this.searchCityPanel=false;
+        }
+    },
+    computed:{
+      changePicture(){
+        if(this.weather.main && this.weather.main.temp > 16){
+          return 'warm'
+        } else if ( this.weather.main && this.weather.main.temp < 16){
+          return 'cold'
+        } else {
+          return ''
+        }
+    },
+    dateBuilder () {
             let d = new Date();
             const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
             const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -93,13 +108,8 @@ export default{
             const year = d.getFullYear();
             return `${day} , ${date} ${month} ${year}`;
         },
-        appendCity(city,[lon,lat]){
-          this.searchCityPanel=true;
-          this.query = city
-          this.fetchWeather(lon,lat)
-          this.searchCityPanel=false;
-        }
-    }
+
+  }
 }
 </script>
 
@@ -113,7 +123,7 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 #apps {
-  background-color: #c4dfe6;
+  background-color: var(--light-color);
   background-size: cover;
   background-position: bottom;
   transition: 0.4s;

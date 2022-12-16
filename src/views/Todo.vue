@@ -1,5 +1,4 @@
 <template>
-    <HeaderVue></HeaderVue>
     <div class="wrapper">
         <div class="container">
             <h1> Todo-List</h1>             
@@ -25,14 +24,8 @@
                     </div>    
          </div>
 </template>
-
 <script>
-import HeaderVue from '../components/Header.vue'
 export default{
-    components: {
-        HeaderVue,
-    },
-  
     data(){
         return{
             selectedIndex: null,
@@ -41,7 +34,7 @@ export default{
             todos:[],
         }
     },
-    async mounted(){
+    mounted(){
         const data =  localStorage.getItem('todos');
         if(data){
             this.todos = JSON.parse(data);
@@ -108,17 +101,17 @@ li{
 h1{
     text-align: center;
     padding-top: 50px;
-    color: #003b46;
+    color: var(--dark);
 }
 hr{
     border: none; 
-    color: #003b46; 
-    background-color: #003b46; 
+    color: var(--dark); 
+    background-color: var(--dark); 
     height: 1px; 
 }
 .wrapper{
     min-height: 100vh;
-    background-color: #c4dfe6;
+    background-color: var(--light-color);
 }
 .container{
   max-width:980px;
@@ -165,7 +158,7 @@ hr{
 
 
 .main-btn{
-    background-color: #003b46;
+    background-color: var(--dark);
 	color: #FFF;
 	font-weight: 700;
 	padding: 1rem 4rem;
@@ -177,8 +170,8 @@ hr{
     margin: 20px 0px 0px 0px;
 }
 .main-btn:hover{
-	border:2px solid #003b46;
-	color: #003b46;
+	border:2px solid var(--dark);
+	color: var(--dark);
 	background-color: #FFF;
 }
 .list{
@@ -192,10 +185,10 @@ hr{
 
 .list-item {
     font-size: 20px;
-    color: #003b46;
+    color: var(--dark);
 }
 .edit-btn {
-    background-color: #003b46;
+    background-color: var(--dark);
 	color: #FFF;
 	font-weight: 700;
 	padding: 1rem 3rem;
@@ -206,12 +199,12 @@ hr{
     border: none;
 }
 .edit-btn:hover{
-	border:2px solid #003b46;
-	color: #003b46;
+	border:2px solid var(--dark);
+	color: var(--dark);
 	background-color: #FFF;
 }
 .delete-btn {
-    background-color: #66a5ad;
+    background-color: var(--medium-light);
 	color: #FFF;
 	font-weight: 700;
 	padding: 1rem 3rem;
@@ -223,8 +216,8 @@ hr{
     margin: 20px 30px;
 }
 .delete-btn:hover{
-	border:2px solid #003b46;
-	color: #003b46;
+	border:2px solid var(--dark);
+	color: var(--dark);
 	background-color: #FFF;
 }
 .nothing-to-do{
