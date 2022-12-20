@@ -1,10 +1,10 @@
 <template>
     <div class="wrapper">
-      <div class="container">
+      <div class="container-column-center">
         <h1>Calculator</h1>
-            <div class="app">
+            <div class="app-calc">
                 <div class="calculator">
-                    <input  class="display" type="text"  v-model="result" placeholder="0">
+                    <input  class="main-display" type="text"  v-model="result" placeholder="0">
                     <button class="cell num" @click="show(num)" v-for="num in numbers" :key="num">{{num}}</button>
                     <button class="cell op" @click="show(op)" v-for="op in operations" :key="op">{{op}}</button>
                     <button class="cell op" @click="calcPercent()">%</button>
@@ -50,25 +50,11 @@
   
   
   <style scoped>
-    * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    }
- 
-
-    a{
-    text-decoration: none;
-    }
-
-    li{
-    list-style: none;
-    }
-
+  
     h1{
     text-align: center;
     margin-bottom: 20px;
-    color: var(--medium-dark);
+    color: var(--dark);
     }
 
     .wrapper{
@@ -78,16 +64,15 @@
     align-items: center;
     justify-content: center;
     }
-    .container{
+    .container-column-center{
     max-width: 1280px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    
     }
-    .app{
+    .app-calc{
       width: 100%;
       display: flex;
       align-items: center;
@@ -100,7 +85,7 @@
     justify-content: space-around;
     width: 100%;
   }
-  .display{
+  .main-display{
     width:100%;
     height: 50px;
     background-color: var(--calc-main);

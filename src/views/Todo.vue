@@ -2,7 +2,7 @@
     <div class="wrapper">
         <div class="container">
             <h1> Todo-List</h1>             
-                    <div class="body">
+                    <div class="body-block">
                         <div class="input-wrapper">
                             <input  class="main-input" type="text" placeholder="Add your note" v-model="todo">  
                         </div>
@@ -85,19 +85,7 @@ export default{
 </script>
 
 <style  scoped>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
-
-a{
-  text-decoration: none;
-}
-li{
-  list-style: none;
-}
 h1{
     text-align: center;
     padding-top: 50px;
@@ -111,14 +99,13 @@ hr{
 }
 .wrapper{
     min-height: 100vh;
-    background-color: var(--light-color);
 }
 .container{
-  max-width:980px;
-  margin: 0 auto;
-}
+    max-width: 1280px;
+    margin: 0 auto;
+  }
 
-.body{
+.body-block{
   width: 100%;;
   display: flex;
   flex-direction: column;

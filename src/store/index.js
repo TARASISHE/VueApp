@@ -4,7 +4,7 @@ import { auth } from '../firebase'
 import { 
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  signOut 
+  signOut
 } from 'firebase/auth'
 import { createToaster } from "@meforma/vue-toaster";
 
@@ -12,11 +12,12 @@ const toaster = createToaster({
   position: 'top-right'
 })
 
-
 export default createStore({
   state: {
     user: null,
     toast:false,
+    userIsLoaded:false,
+    skeletonLoaded:false,
   },
   mutations: {
     SET_USER (state, user) {
@@ -25,6 +26,12 @@ export default createStore({
     CLEAR_USER (state) {
       state.user = null
     },
+    setUserLoadedState(state){
+      state.userIsLoaded = true
+    },
+    setSkeletonLoaded(state){
+      state.skeletonLoaded = true
+    }
   },
   
   actions: {
@@ -46,7 +53,6 @@ export default createStore({
         return
       }
       commit('SET_USER', auth.currentUser)
-      console.log(auth.currentUser)
       router.push('/')
       toaster.show(`Welcome back`);
     },
@@ -85,16 +91,17 @@ export default createStore({
     },
 
     fetchUser ({ commit }) {
-      auth.onAuthStateChanged(async user => {
+      auth.onAuthStateChanged(async (user) => {
         if (user === null) {
           commit('CLEAR_USER')
         } else {
           commit('SET_USER', user)
           if (router.isReady() && router.currentRoute.value.path === '/login') {
             router.push('/')
-            console.log(auth.currentUser)
           }
         }
+          commit('setUserLoadedState')
+          commit('setSkeletonLoaded')
       })
     }
   }

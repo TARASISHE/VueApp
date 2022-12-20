@@ -1,3 +1,20 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  a{
+    text-decoration: none;
+  }
+  li{
+    list-style: none;
+  }
+  
+
 :root{
     --light-color: #c4dfe6;
     --medium-dark:#07575b;
@@ -6,3 +23,29 @@
     --calc-main:#243849;
     --op-colour:#ff9900;
 }
+
+
+  .toast-enter-from {
+    opacity: 0;
+    transform: translateY(-70px);
+  }
+
+  .toast-enter-active {
+    transition: all 0.3s ease;
+  }
+ 
+  .toast-leave-to {
+    opacity: 0;
+    transform: translateY(-70px);
+  }
+  .toast-leave-active {
+    transition: all 0.3s ease;
+  }
+
+  .flex-center-between{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }

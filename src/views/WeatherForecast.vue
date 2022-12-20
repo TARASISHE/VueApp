@@ -40,19 +40,20 @@
   </template>
 <script>
 import Spinner from '../components/Spinner.vue';
+//  import {apiGetResults, apiGetWeather} from '../api/api.js'
 export default{
   components:{
     Spinner,
   },
     data(){
         return{
-            apiKey:'776cbefeb4e33b7b80b3a1af5b49be36',
+            // apiKey:'776cbefeb4e33b7b80b3a1af5b49be36',
             urlBase: 'https://api.openweathermap.org/data/2.5/',
             query: '',
             weather: {},
             loading:false,
             queryTimeout:null,
-            cityApiKey:"pk.eyJ1IjoidGFyYXNpc2hlIiwiYSI6ImNsYXh4ZDJjbzA2M2Yzem81c3Z6ZTFsMDgifQ.TYjCtwTUeohyUJo_ustV5w",
+            // cityApiKey:"pk.eyJ1IjoidGFyYXNpc2hlIiwiYSI6ImNsYXh4ZDJjbzA2M2Yzem81c3Z6ZTFsMDgifQ.TYjCtwTUeohyUJo_ustV5w",
             cities:{},
             searchCityPanel:false,
         }
@@ -61,9 +62,11 @@ export default{
         async fetchWeather(lon,lat){
           this.loading = true;
           try{
-              const resp = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${this.apiKey}&units=metric`);
+              const resp = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${import.meta.env.VITE_WEATHER_API_KEY}&units=metric`);
               const data = await resp.json();
               this.weather = data;
+              // findhWeather(lon,lat)
+              // this.weather = await apiGetWeather();
           } catch (e){
             alert(`Error:${e}`)
           } finally{
@@ -75,9 +78,11 @@ export default{
           clearTimeout(this.queryTimeout);
           this.queryTimeout = setTimeout(async ()=>{
             if(this.query !== ''){
-              const result = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${this.query}.json?access_token=${this.cityApiKey}&types=place`);
+              const result = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${this.query}.json?access_token=${import.meta.env.VITE_CITYFIND_API_KEY}&types=place`);
               const data = await result.json();
               this.cities = data.features;
+              // apiGetResults()
+              // this.cities=apiGetResults()
             }
           },300)
         },
@@ -109,19 +114,15 @@ export default{
             return `${day} , ${date} ${month} ${year}`;
         },
 
+  },
+  created(){
+    console.log
   }
 }
 </script>
 
-<style scoped>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-body {
-  font-family: 'Roboto', sans-serif;
-}
+<style>
+
 #apps {
   background-color: var(--light-color);
   background-size: cover;

@@ -63,11 +63,8 @@ router.beforeEach((to, from, next) => {
     next('/')
     console.log(auth.currentUser)
     return;
-  }
-  if (to.matched.some(record => record.meta.requiresAuth) && !auth.currentUser) {
+  }else if (to.matched.some(record => record.meta.requiresAuth) && !auth.currentUser) {
     next('/login')
-    console.log("login")
-    console.log(auth.currentUser)
     return;
   }
   next();

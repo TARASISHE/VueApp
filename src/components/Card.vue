@@ -1,5 +1,5 @@
 <template>
-    <div class="flex-items">
+    <div class="flex-items-center">
     <div class="item"> 
         <h3 class="item-title">{{title}}</h3>
         <p class="item-text">{{text}}</p> 
@@ -28,7 +28,7 @@ export default {
 
 <style scoped>
 
-.flex-items{
+.flex-items-center{
     display: flex;
     flex-wrap: wrap;
     width: 100%;

@@ -7,20 +7,17 @@
 					name="email"
 					type="email" 
 					placeholder="Email address"
-					v-model="login_form.email" />
+					v-model="loginForm.email"/> <!-- v-model="login_form.email" -->
 				<input 
 					name="password"
 					type="password" 
 					placeholder="Password" 
-					v-model="login_form.password" />
-					<!--<button 
+					v-model="loginForm.password"/> <!-- v-model="login_form.password" -->
+					<button 
 					class="login_btn"
-					@click="$store.dispatch('login')">
+					@click.prevent="enterLoginInfo()">  <!--login()--> 
 						Login
-					</button>  якщо роблю через кнопку то видає помилку при вході на сторінку через Composition API, бо не виде реф-->
-				<input 
-					type="submit" 
-					value="Login" />
+					</button> 
 				<p class="register-note">Don't have an account? <router-link class="access-link" to="/register">Register</router-link></p>
 
 			</form>
@@ -28,10 +25,9 @@
 	</main>
 </template>
 
-<script>
+<!-- <script>
 import { ref } from 'vue'
 import { useStore } from 'vuex'
-
 
 export default {
 	setup () {
@@ -39,6 +35,7 @@ export default {
 		const store = useStore();
 		const login = () => {
 			store.dispatch('login', login_form.value);
+			console.log(login_form.value)
 		}
 		return {
 			login_form,
@@ -46,25 +43,28 @@ export default {
 		}
 	},
 }
-</script>
+</script> -->
 
-<!--
-	<script>
-		export default{
-			data(){
-				return{
-					loginForm:{},
-				}
+
+<script>
+	export default{
+		data(){
+			return{
+				loginForm:{
+					email:'',
+					login:''
 			},
-			methods:{
-				enterLoginInfo(){
-					this.$store.dispatch('login', loginForm)
-				}
+		}
+	},
+		methods:{
+			enterLoginInfo(){
+				this.$store.dispatch('login', this.loginForm)
 			}
 		}
+	}
 
-	</script>
--->
+</script>
+
 <style scoped>
 
 .login{
@@ -153,8 +153,8 @@ form.login input[type="submit"]:hover{
 .access-link:hover{
 	text-decoration: underline;
 }
-/*
-.login_btn{
+
+ .login_btn{
 	background-color: var(--medium-dark);
 	color: #FFF;
 	font-weight: 700;
@@ -179,8 +179,8 @@ form.login input[type="submit"]:hover{
 		border:2px solid var(--medium-dark);
 	color: var(--medium-dark);
 	background-color: #FFF;
-}
-*/
+} 
+
 
 @media screen and (max-width:540px){
 	.forms{

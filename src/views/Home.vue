@@ -5,8 +5,8 @@
   </Transition>-->
   <div class="wrapper">
     <div class="container">
-      <div class="flex-center">
-        <ul class="flex">
+      <div>
+        <ul class="flex-center">
           <li v-for="card in cards"  :key="card">
         <Card 
         :title="card.title"
@@ -55,33 +55,25 @@ props:{
         } 
       ]
     }
-  }
+  },
 }
 
 </script>
 
-<style scoped>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+<style >
 
-a{
-  text-decoration: none;
-}
-li{
-  list-style: none;
-}
 .wrapper{
   min-height: 93.4vh;
 	background-color: #c4dfe6;
+  
 }
+
 .container{
-  max-width: 1280px;
-  margin: 0 auto;
-}
-.flex{
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+.flex-center{
   height: 100%;
   width: 100%;
   display: flex;
@@ -90,22 +82,6 @@ li{
   flex-wrap: wrap;
 }
 
-  .toast-enter-from {
-    opacity: 0;
-    transform: translateY(-70px);
-  }
-
-  .toast-enter-active {
-    transition: all 0.3s ease;
-  }
- 
-  .toast-leave-to {
-    opacity: 0;
-    transform: translateY(-70px);
-  }
-  .toast-leave-active {
-    transition: all 0.3s ease;
-  }
 
 
 </style>

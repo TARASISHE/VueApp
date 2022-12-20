@@ -1,7 +1,7 @@
 <template>
         <div id="nav" class="nav"><!--v-if="$store.state.user"--> 
           <div class="container">
-            <div class="flex">
+            <div class="flex-center-between">
               <ul class="list">
                 <li class="list-link"><router-link to="/">Home</router-link> </li>
                 <li class="list-link"><router-link to="/calculator">Calculator</router-link></li>
@@ -26,21 +26,11 @@
       })
     }
   }
+  <script/>
   -->
 
   <style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  a{
-    text-decoration: none;
-  }
-  li{
-    list-style: none;
-  }
+
   .container{
     max-width: 1280px;
     margin: 0 auto;
@@ -50,25 +40,20 @@
     height: 50px;
     background-color: var(--medium-dark); 
     padding-bottom: 50px;
+    padding: 0px 15px;
   }
-  .flex{
-    width: 100%;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
+ 
   .list{
     display: flex;
     gap: 40px;
   }
+ 
   .list-link a{
     font-size: 16px;
     color: var(--light-color);
   }
   
   .list-link a:hover{
-  
     color: #FFF;
     text-decoration: underline;
   }
@@ -93,7 +78,7 @@
   }
   
   @media  screen and (max-width: 1281px){
-    .flex{
+    .flex-center-between{
       padding: 0px 15px;
     }
   }
@@ -108,7 +93,7 @@
   }
 
   @media  screen and (max-width: 500px){
-   .flex{
+   .flex-center-between{
     flex-direction: column;
    }
    .nav{

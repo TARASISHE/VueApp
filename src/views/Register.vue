@@ -7,27 +7,24 @@
 					name="email"
 					type="email" 
 					placeholder="Email address"
-					v-model="register_form.email" />
+					v-model="registerForm.email" />
 				<input 
 					name="password"
 					type="password" 
 					placeholder="Password" 
-					v-model="register_form.password" />
-				<input 
-					type="submit" 
-					value="Register" />
-					<!--<button 
+					v-model="registerForm.password" />
+					<button 
 					class="register_btn"
-					@click="$store.dispatch('register')">
+					@click.prevent="enterRegisterInfo()">  
 						Register
-					</button>  якщо роблю через кнопку то видає помилку при вході на сторінку-->
+					</button>
                 <p class="login-note">Already have an account?<span> <router-link class="access-linklog" to="/Login">Login</router-link></span></p>
 			</form>
 		</section>
 	</main>
 </template>
 
-<script >
+<!-- <script>
 import { ref } from 'vue'
 import { useStore } from 'vuex'
 export default {
@@ -43,10 +40,28 @@ export default {
 		}
 	}
 }
+</script> -->
+
+<script>
+	export default{
+		data(){
+			return{
+				registerForm:{
+					email:'',
+					login:''
+			},
+		}
+	},
+		methods:{
+			enterRegisterInfo(){
+				this.$store.dispatch('register', this.registerForm)
+			}
+		}
+	}
+
 </script>
 
 <style scoped>
-
 
 .login{
 	min-height: 100vh;
@@ -134,9 +149,9 @@ form.register input[type="submit"]:hover{
 .access-linklog:hover{
 	text-decoration: underline;
 }
-/*
+
 .register_btn{
-	background-color: var(--medium-dark)b;
+	background-color: var(--medium-dark);
 	color: #FFF;
 	font-weight: 700;
 	padding: 1rem 2rem;
@@ -161,7 +176,7 @@ form.register input[type="submit"]:hover{
 	color: var(--medium-dark);
 	background-color: #FFF;
 }
-*/
+
 
 @media screen and (max-width:540px){
 	.forms{
