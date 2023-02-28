@@ -32,6 +32,7 @@
       show(char){
         this.result = this.result.toString();
         this.result += char;
+        console.log(char)
       },
       reset(){
         this.result='';
@@ -42,7 +43,6 @@
       calcPercent(){
         this.result = `${parseFloat(this.result) / 100}`;
       }
-  
     },
   }
   </script>

@@ -1,5 +1,4 @@
 <template>
-  
       <SkeletonHeader v-if="!$store.state.skeletonLoaded"></SkeletonHeader>
       <Header v-if="$store.state.user"></Header>
       <transition name="fade" mode="out-in">

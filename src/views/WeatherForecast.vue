@@ -65,8 +65,7 @@ export default{
               const resp = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${import.meta.env.VITE_WEATHER_API_KEY}&units=metric`);
               const data = await resp.json();
               this.weather = data;
-              // findhWeather(lon,lat)
-              // this.weather = await apiGetWeather();
+              console.log(data)
           } catch (e){
             alert(`Error:${e}`)
           } finally{
